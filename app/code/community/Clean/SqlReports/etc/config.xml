@@ -78,6 +78,7 @@
         <reports>
             <cleansql>
                 <max_reports_in_menu>15</max_reports_in_menu>
+                <default_connection>customreport_connection</default_connection>
             </cleansql>
         </reports>
     </default>

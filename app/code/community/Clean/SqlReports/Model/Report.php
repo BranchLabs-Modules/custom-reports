@@ -74,7 +74,10 @@ class Clean_SqlReports_Model_Report extends Mage_Core_Model_Abstract
             'TRUNCATE TABLE',
             'DROP TABLE',
             'DROP TEMPORARY TABLE',
-            'DELETE FROM'
+            'DELETE FROM',
+            'UPDATE',
+            'INSERT INTO',
+            'ALTER'
         );
 
         $sqlQuery = $this->getSqlQuery();
@@ -86,7 +89,7 @@ class Clean_SqlReports_Model_Report extends Mage_Core_Model_Abstract
         foreach($disallowedPatterns as $pattern) {
             if (stripos($sqlQuery, $pattern) !== false) {
                 $this->_dataSaveAllowed = false;
-                Mage::getSingleton('core/session')->addError(Mage::helper('cleansql')->__('TRUNCATE, DROP or DELETE statemanets are not allowed'));
+                Mage::getSingleton('core/session')->addError(Mage::helper('cleansql')->__('TRUNCATE, DROP, UPDATE, INSERT, ALTER or DELETE statemanets are not allowed'));
                 return $this;
             }
         }
